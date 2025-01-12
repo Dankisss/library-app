@@ -13,13 +13,13 @@ const BookList = () => {
     return {
       ...singleBook,
       // removing /works/ to get only id
-      id: (singleBook.id).replace("/works/", ""),
-      cover_img: singleBook.cover_id ? `https://covers.openlibrary.org/b/id/${singleBook.cover_id}-L.jpg` : coverImg
+      // id: (singleBook.id).replace("/works/", ""),
+      // cover_img: singleBook.cover_id ? `https://covers.openlibrary.org/b/id/${singleBook.cover_id}-L.jpg` : coverImg
     }
   });
 
   if(loading) return <Loading />;
-
+  console.log("Books: ", books);
   return (
     <section className='booklist'>
       <div className='container'>
@@ -28,9 +28,9 @@ const BookList = () => {
         </div>
         <div className='booklist-content grid'>
           {
-            booksWithCovers.slice(0, 30).map((item, index) => {
+            books.map((item, index) => {
               return (
-                <Book key = {index} {...item} />
+                <Book key = {index} book={item} />
               )
             })
           }
